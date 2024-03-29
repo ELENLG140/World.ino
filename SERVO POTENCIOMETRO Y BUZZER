@@ -1,0 +1,24 @@
+#include <Servo.h>
+int el_pro= 10; // EL BUZZER
+Servo don_chuyito;// EL SERVO
+int dona_sofi; //EL POTENCIOMETRO
+
+void setup() {
+  don_chuyito.attach(9); 
+  dona_sofi = A0;
+  pinMode(el_pro,OUTPUT);
+}
+
+void loop() {
+  int sofi_valor = analogRead(dona_sofi); 
+  int chuyito_valor = map(sofi_valor, 0, 1023, 0, 180);
+  don_chuyito.write(chuyito_valor);
+  if(chuyito_valor == 180){tone(el_pro,330);}
+ else if((chuyito_valor == 0)){
+  tone(el_pro,200);
+ 
+  
+  
+ }  else{noTone(el_pro);}
+  
+}
